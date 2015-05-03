@@ -11,6 +11,8 @@
 		3B2A1EB81AE63769005EAB4E /* do_TencentQQ_SM.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3B8BB5101AE4E05600FED448 /* do_TencentQQ_SM.h */; };
 		3B8BB5121AE4E05600FED448 /* do_TencentQQ_App.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8BB50F1AE4E05600FED448 /* do_TencentQQ_App.m */; };
 		3B8BB5131AE4E05600FED448 /* do_TencentQQ_SM.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8BB5111AE4E05600FED448 /* do_TencentQQ_SM.m */; };
+		3B97E5481AF65E4E00F20BD7 /* YZQQSDKCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B97E5471AF65E4E00F20BD7 /* YZQQSDKCall.m */; };
+		3B97E54A1AF661A800F20BD7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B97E5491AF661A800F20BD7 /* libz.dylib */; };
 		3B9A0E3D1AE5EC9700B0BD10 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9A0E3C1AE5EC9700B0BD10 /* TencentOpenAPI.framework */; };
 		3B9A0E3F1AE5ECC200B0BD10 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9A0E3E1AE5ECC200B0BD10 /* Security.framework */; };
 		3B9A0E411AE5ECD100B0BD10 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9A0E401AE5ECD100B0BD10 /* libiconv.dylib */; };
@@ -19,7 +21,6 @@
 		3B9A0E471AE5ECEC00B0BD10 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9A0E461AE5ECEC00B0BD10 /* libsqlite3.dylib */; };
 		3B9A0E491AE5ECF700B0BD10 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9A0E481AE5ECF700B0BD10 /* CoreTelephony.framework */; };
 		3B9A0E4B1AE5ED0100B0BD10 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9A0E4A1AE5ED0100B0BD10 /* libstdc++.6.0.9.dylib */; };
-		3B9A0E4D1AE5ED0B00B0BD10 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9A0E4C1AE5ED0B00B0BD10 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,6 +43,9 @@
 		3B8BB50F1AE4E05600FED448 /* do_TencentQQ_App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = do_TencentQQ_App.m; sourceTree = "<group>"; };
 		3B8BB5101AE4E05600FED448 /* do_TencentQQ_SM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = do_TencentQQ_SM.h; sourceTree = "<group>"; };
 		3B8BB5111AE4E05600FED448 /* do_TencentQQ_SM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = do_TencentQQ_SM.m; sourceTree = "<group>"; };
+		3B97E5461AF65E4E00F20BD7 /* YZQQSDKCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZQQSDKCall.h; sourceTree = "<group>"; };
+		3B97E5471AF65E4E00F20BD7 /* YZQQSDKCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZQQSDKCall.m; sourceTree = "<group>"; };
+		3B97E5491AF661A800F20BD7 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		3B9A0E3B1AE5EC9700B0BD10 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = SOURCE_ROOT; };
 		3B9A0E3C1AE5EC9700B0BD10 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = SOURCE_ROOT; };
 		3B9A0E3E1AE5ECC200B0BD10 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -51,7 +55,6 @@
 		3B9A0E461AE5ECEC00B0BD10 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		3B9A0E481AE5ECF700B0BD10 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3B9A0E4A1AE5ED0100B0BD10 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
-		3B9A0E4C1AE5ED0B00B0BD10 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		A4E1EABD1A778F1700F0B3CE /* libDoExt_SM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDoExt_SM.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E1EADC1A778F8200F0B3CE /* TYPEID_SM.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TYPEID_SM.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B9A0E4D1AE5ED0B00B0BD10 /* libz.dylib in Frameworks */,
+				3B97E54A1AF661A800F20BD7 /* libz.dylib in Frameworks */,
 				3B9A0E4B1AE5ED0100B0BD10 /* libstdc++.6.0.9.dylib in Frameworks */,
 				3B9A0E491AE5ECF700B0BD10 /* CoreTelephony.framework in Frameworks */,
 				3B9A0E471AE5ECEC00B0BD10 /* libsqlite3.dylib in Frameworks */,
@@ -79,7 +82,7 @@
 		3B9A0E3A1AE5EC4500B0BD10 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				3B9A0E4C1AE5ED0B00B0BD10 /* libz.dylib */,
+				3B97E5491AF661A800F20BD7 /* libz.dylib */,
 				3B9A0E4A1AE5ED0100B0BD10 /* libstdc++.6.0.9.dylib */,
 				3B9A0E481AE5ECF700B0BD10 /* CoreTelephony.framework */,
 				3B9A0E461AE5ECEC00B0BD10 /* libsqlite3.dylib */,
@@ -108,6 +111,8 @@
 				3B8BB50F1AE4E05600FED448 /* do_TencentQQ_App.m */,
 				3B8BB5101AE4E05600FED448 /* do_TencentQQ_SM.h */,
 				3B8BB5111AE4E05600FED448 /* do_TencentQQ_SM.m */,
+				3B97E5461AF65E4E00F20BD7 /* YZQQSDKCall.h */,
+				3B97E5471AF65E4E00F20BD7 /* YZQQSDKCall.m */,
 			);
 			path = ext_implement;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B97E5481AF65E4E00F20BD7 /* YZQQSDKCall.m in Sources */,
 				3B8BB5131AE4E05600FED448 /* do_TencentQQ_SM.m in Sources */,
 				3B8BB5121AE4E05600FED448 /* do_TencentQQ_App.m in Sources */,
 			);

@@ -12,6 +12,7 @@
 #import "doIScriptEngine.h"
 #import "doInvokeResult.h"
 #import "doJsonNode.h"
+#import "YZQQSDKCall.h"
 
 #import <TencentOpenAPI/TencentOAuth.h>
 
@@ -27,68 +28,69 @@
 #pragma mark - 同步异步方法的实现
 /*
  1.参数节点
-     doJsonNode *_dictParas = [parms objectAtIndex:0];
-     a.在节点中，获取对应的参数
-     NSString *title = [_dictParas GetOneText:@"title" :@"" ];
-     说明：第一个参数为对象名，第二为默认值
+ doJsonNode *_dictParas = [parms objectAtIndex:0];
+ a.在节点中，获取对应的参数
+ NSString *title = [_dictParas GetOneText:@"title" :@"" ];
+ 说明：第一个参数为对象名，第二为默认值
  
  2.脚本运行时的引擎
-     id<doIScriptEngine> _scritEngine = [parms objectAtIndex:1];
+ id<doIScriptEngine> _scritEngine = [parms objectAtIndex:1];
  
  同步：
  3.同步回调对象(有回调需要添加如下代码)
-     doInvokeResult *_invokeResult = [parms objectAtIndex:2];
-     回调信息
-     如：（回调一个字符串信息）
-     [_invokeResult SetResultText:((doUIModule *)_model).UniqueKey];
+ doInvokeResult *_invokeResult = [parms objectAtIndex:2];
+ 回调信息
+ 如：（回调一个字符串信息）
+ [_invokeResult SetResultText:((doUIModule *)_model).UniqueKey];
  异步：
  3.获取回调函数名(异步方法都有回调)
-     NSString *_callbackName = [parms objectAtIndex:2];
-     在合适的地方进行下面的代码，完成回调
-     新建一个回调对象
-     doInvokeResult *_invokeResult = [[doInvokeResult alloc] init];
-     填入对应的信息
-     如：（回调一个字符串）
-     [_invokeResult SetResultText: @"异步方法完成"];
-     [_scritEngine Callback:_callbackName :_invokeResult];
+ NSString *_callbackName = [parms objectAtIndex:2];
+ 在合适的地方进行下面的代码，完成回调
+ 新建一个回调对象
+ doInvokeResult *_invokeResult = [[doInvokeResult alloc] init];
+ 填入对应的信息
+ 如：（回调一个字符串）
+ [_invokeResult SetResultText: @"异步方法完成"];
+ [_scritEngine Callback:_callbackName :_invokeResult];
  */
 //同步
- - (void)logout:(NSArray *)parms
- {
-//     doJsonNode *_dictParas = [parms objectAtIndex:0];
-     self.scritEngine = [parms objectAtIndex:1];
-     //自己的代码实现
-     [_tencent_oauth logout:self];
- }
+- (void)logout:(NSArray *)parms
+{
+    //     doJsonNode *_dictParas = [parms objectAtIndex:0];
+    self.scritEngine = [parms objectAtIndex:1];
+    //自己的代码实现
+    [[YZQQSDKCall getinstance].oauth logout:self];
+}
 //异步
 - (void)getUserInfo:(NSArray *)parms
 {
-//    doJsonNode *_dictParas = [parms objectAtIndex:0];
+    //    doJsonNode *_dictParas = [parms objectAtIndex:0];
     self.scritEngine = [parms objectAtIndex:1];
     //自己的代码实现
     
     self.callbackName = [parms objectAtIndex:2];
-
-    if ([_tencent_oauth getUserInfo]) {
+    
+    if ([[YZQQSDKCall getinstance].oauth getUserInfo]) {
         
     }
     else
     {
         
     }
-//    doInvokeResult *_invokeResult = [[doInvokeResult alloc] init];
+    //    doInvokeResult *_invokeResult = [[doInvokeResult alloc] init];
 }
 - (void)login:(NSArray *)parms
 {
+    
     doJsonNode *_dictParas = [parms objectAtIndex:0];
     self.scritEngine  = [parms objectAtIndex:1];
     //自己的代码实现
     
     self.callbackName = [parms objectAtIndex:2];
-//    doInvokeResult *_invokeResult = [[doInvokeResult alloc] init];
+    //    doInvokeResult *_invokeResult = [[doInvokeResult alloc] init];
     
     NSString *app_id = [_dictParas GetOneText:@"appId" :@""];
-    _tencent_oauth = [[TencentOAuth alloc]initWithAppId:app_id andDelegate:self];
+    [YZQQSDKCall getinstance].oauth = [[TencentOAuth alloc]initWithAppId:app_id andDelegate:self];
     NSArray* permissions = [NSArray arrayWithObjects:
                             kOPEN_PERMISSION_GET_USER_INFO,
                             kOPEN_PERMISSION_GET_SIMPLE_USER_INFO,
@@ -113,7 +115,9 @@
                             kOPEN_PERMISSION_GET_INTIMATE_FRIENDS_WEIBO,
                             kOPEN_PERMISSION_MATCH_NICK_TIPS_WEIBO,
                             nil];
-    [_tencent_oauth authorize:permissions];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[[YZQQSDKCall getinstance] oauth] authorize:permissions inSafari:NO];
+    });
 }
 
 #pragma -mark -
