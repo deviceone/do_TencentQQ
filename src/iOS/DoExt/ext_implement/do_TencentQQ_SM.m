@@ -61,7 +61,10 @@
 //异步
 - (void)getUserInfo:(NSArray *)parms
 {
+    self.scritEngine  = [parms objectAtIndex:1];
     //自己的代码实现
+    self.callbackName = [parms objectAtIndex:2];
+    
 }
 - (void)login:(NSArray *)parms
 {
@@ -72,7 +75,6 @@
     
     self.callbackName = [parms objectAtIndex:2];
     NSString *app_id = [_dictParas GetOneText:@"appId" :@""];
-    //    self.oauth = [[TencentOAuth alloc]initWithAppId:app_id andDelegate:self];
     [YZQQSDKCall getinstance].oauth = [[TencentOAuth alloc]initWithAppId:app_id andDelegate:self];
     NSArray* permissions = [NSArray arrayWithObjects:
                             kOPEN_PERMISSION_GET_USER_INFO,
@@ -131,22 +133,6 @@
     if ([[YZQQSDKCall getinstance].oauth getUserInfo]) {
         
     }
-}
-/**
- *  登录失败后的回调
- *
- *  @param cancelled 代表用户是否主动退出登录
- */
--(void)tencentDidNotLogin:(BOOL)cancelled
-{
-    
-}
-/**
- *  退出登录的回调
- */
--(void)tencentDidLogout
-{
-    
 }
 /**
  *
