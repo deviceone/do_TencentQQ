@@ -21,6 +21,7 @@
 		3B9A0E471AE5ECEC00B0BD10 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9A0E461AE5ECEC00B0BD10 /* libsqlite3.dylib */; };
 		3B9A0E491AE5ECF700B0BD10 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9A0E481AE5ECF700B0BD10 /* CoreTelephony.framework */; };
 		3B9A0E4B1AE5ED0100B0BD10 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9A0E4A1AE5ED0100B0BD10 /* libstdc++.6.0.9.dylib */; };
+		3BE9EA591AFC987400FC4269 /* do_TencentQQ_ISM.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3B8BB50D1AE4E04D00FED448 /* do_TencentQQ_ISM.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +31,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				3BE9EA591AFC987400FC4269 /* do_TencentQQ_ISM.h in CopyFiles */,
 				3B2A1EB71AE63769005EAB4E /* do_TencentQQ_App.h in CopyFiles */,
 				3B2A1EB81AE63769005EAB4E /* do_TencentQQ_SM.h in CopyFiles */,
 			);
@@ -55,7 +57,7 @@
 		3B9A0E461AE5ECEC00B0BD10 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		3B9A0E481AE5ECF700B0BD10 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3B9A0E4A1AE5ED0100B0BD10 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
-		A4E1EABD1A778F1700F0B3CE /* libDoExt_SM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDoExt_SM.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4E1EABD1A778F1700F0B3CE /* libDoTencentQQ_SM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDoTencentQQ_SM.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4E1EADC1A778F8200F0B3CE /* TYPEID_SM.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TYPEID_SM.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,7 +133,7 @@
 		A4E1EABE1A778F1700F0B3CE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A4E1EABD1A778F1700F0B3CE /* libDoExt_SM.a */,
+				A4E1EABD1A778F1700F0B3CE /* libDoTencentQQ_SM.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,9 +141,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A4E1EABC1A778F1700F0B3CE /* DoExt_SM */ = {
+		A4E1EABC1A778F1700F0B3CE /* DoTencentQQ_SM */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A4E1EAD11A778F1700F0B3CE /* Build configuration list for PBXNativeTarget "DoExt_SM" */;
+			buildConfigurationList = A4E1EAD11A778F1700F0B3CE /* Build configuration list for PBXNativeTarget "DoTencentQQ_SM" */;
 			buildPhases = (
 				A4E1EAB91A778F1700F0B3CE /* Sources */,
 				A4E1EABA1A778F1700F0B3CE /* Frameworks */,
@@ -151,9 +153,9 @@
 			);
 			dependencies = (
 			);
-			name = DoExt_SM;
+			name = DoTencentQQ_SM;
 			productName = DoExt_SM;
-			productReference = A4E1EABD1A778F1700F0B3CE /* libDoExt_SM.a */;
+			productReference = A4E1EABD1A778F1700F0B3CE /* libDoTencentQQ_SM.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -170,7 +172,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A4E1EAB81A778F1700F0B3CE /* Build configuration list for PBXProject "DoExt_SM" */;
+			buildConfigurationList = A4E1EAB81A778F1700F0B3CE /* Build configuration list for PBXProject "DoTencentQQ_SM" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -182,7 +184,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A4E1EABC1A778F1700F0B3CE /* DoExt_SM */,
+				A4E1EABC1A778F1700F0B3CE /* DoTencentQQ_SM */,
 			);
 		};
 /* End PBXProject section */
@@ -288,7 +290,7 @@
 				LIBRARY_SEARCH_PATHS = ../doLib/doCore;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DoTencentQQ_SM;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = ../doLib/doCore/Header;
@@ -306,7 +308,7 @@
 				LIBRARY_SEARCH_PATHS = ../doLib/doCore;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DoTencentQQ_SM;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = ../doLib/doCore/Header;
@@ -316,7 +318,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A4E1EAB81A778F1700F0B3CE /* Build configuration list for PBXProject "DoExt_SM" */ = {
+		A4E1EAB81A778F1700F0B3CE /* Build configuration list for PBXProject "DoTencentQQ_SM" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A4E1EACF1A778F1700F0B3CE /* Debug */,
@@ -325,7 +327,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A4E1EAD11A778F1700F0B3CE /* Build configuration list for PBXNativeTarget "DoExt_SM" */ = {
+		A4E1EAD11A778F1700F0B3CE /* Build configuration list for PBXNativeTarget "DoTencentQQ_SM" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A4E1EAD21A778F1700F0B3CE /* Debug */,
