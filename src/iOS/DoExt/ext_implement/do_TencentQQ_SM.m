@@ -11,7 +11,7 @@
 #import "doScriptEngineHelper.h"
 #import "doIScriptEngine.h"
 #import "doInvokeResult.h"
-#import "doJsonNode.h"
+#import "doJsonHelper.h"
 #import "YZQQSDKCall.h"
 
 #import <TencentOpenAPI/TencentOAuth.h>
@@ -69,12 +69,12 @@
 - (void)login:(NSArray *)parms
 {
     
-    doJsonNode *_dictParas = [parms objectAtIndex:0];
+    NSDictionary *_dictParas = [parms objectAtIndex:0];
     self.scritEngine  = [parms objectAtIndex:1];
     //自己的代码实现
     
     self.callbackName = [parms objectAtIndex:2];
-    NSString *app_id = [_dictParas GetOneText:@"appId" :@""];
+    NSString *app_id = [doJsonHelper GetOneText:_dictParas :@"appId" :@""];
     [YZQQSDKCall getinstance].oauth = [[TencentOAuth alloc]initWithAppId:app_id andDelegate:self];
     NSArray* permissions = [NSArray arrayWithObjects:
                             kOPEN_PERMISSION_GET_USER_INFO,
