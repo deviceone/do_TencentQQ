@@ -17,7 +17,6 @@
 #import <TencentOpenAPI/TencentOAuth.h>
 
 @interface do_TencentQQ_SM() <TencentSessionDelegate>
-@property(nonatomic,strong) TencentOAuth *tencent_oauth;
 @property(nonatomic,copy) NSString *callbackName;
 @property(nonatomic,strong) id<doIScriptEngine> scritEngine;
 
@@ -56,28 +55,16 @@
 //同步
 - (void)logout:(NSArray *)parms
 {
-    //     doJsonNode *_dictParas = [parms objectAtIndex:0];
-    self.scritEngine = [parms objectAtIndex:1];
     //自己的代码实现
     [[YZQQSDKCall getinstance].oauth logout:self];
 }
 //异步
 - (void)getUserInfo:(NSArray *)parms
 {
-    //    doJsonNode *_dictParas = [parms objectAtIndex:0];
-    self.scritEngine = [parms objectAtIndex:1];
+    self.scritEngine  = [parms objectAtIndex:1];
     //自己的代码实现
-    
     self.callbackName = [parms objectAtIndex:2];
     
-    if ([[YZQQSDKCall getinstance].oauth getUserInfo]) {
-        
-    }
-    else
-    {
-        
-    }
-    //    doInvokeResult *_invokeResult = [[doInvokeResult alloc] init];
 }
 - (void)login:(NSArray *)parms
 {
@@ -87,8 +74,6 @@
     //自己的代码实现
     
     self.callbackName = [parms objectAtIndex:2];
-    //    doInvokeResult *_invokeResult = [[doInvokeResult alloc] init];
-    
     NSString *app_id = [_dictParas GetOneText:@"appId" :@""];
     [YZQQSDKCall getinstance].oauth = [[TencentOAuth alloc]initWithAppId:app_id andDelegate:self];
     NSArray* permissions = [NSArray arrayWithObjects:
@@ -116,7 +101,7 @@
                             kOPEN_PERMISSION_MATCH_NICK_TIPS_WEIBO,
                             nil];
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[[YZQQSDKCall getinstance] oauth] authorize:permissions inSafari:NO];
+        [[YZQQSDKCall getinstance].oauth authorize:permissions inSafari:NO];
     });
 }
 
@@ -134,34 +119,20 @@
  */
 -(void)tencentDidLogin
 {
-    NSString *accessToken = [_tencent_oauth accessToken];
-    NSString *openID = [_tencent_oauth openId];
+    NSString *accessToken = [[YZQQSDKCall getinstance].oauth accessToken];
+    NSString *openID = [[YZQQSDKCall getinstance].oauth openId];
     
-    NSString *expirationDate = [NSString stringWithFormat:@"%f",[_tencent_oauth expirationDate].timeIntervalSinceNow];
-    NSString *ret = [_tencent_oauth passData][@"ret"];
-    NSString *pay_token = [_tencent_oauth passData][@"pay_token"];
-    NSString *msg = [_tencent_oauth passData][@"msg"];
+    NSString *expirationDate = [NSString stringWithFormat:@"%f",[[YZQQSDKCall getinstance].oauth expirationDate].timeIntervalSinceNow];
+    NSString *ret = [[YZQQSDKCall getinstance].oauth passData][@"ret"];
+    NSString *pay_token = [[YZQQSDKCall getinstance].oauth passData][@"pay_token"];
+    NSString *msg = [[YZQQSDKCall getinstance].oauth passData][@"msg"];
     NSString *resultStr = [NSString stringWithFormat:@"{ret:%@,pay_token:%@,openid:%@,expires_in:%@,msg:%@,access_token:%@}",ret,pay_token,openID,expirationDate,msg,accessToken];
-    doInvokeResult *_invokeResult = [[doInvokeResult alloc] init];
+    doInvokeResult *_invokeResult = [[doInvokeResult alloc]init:self.UniqueKey];
     [_invokeResult SetResultText:resultStr];
-    NSLog(@"登陆返回信息：%@",resultStr);
     [self.scritEngine Callback:self.callbackName :_invokeResult];
-}
-/**
- *  登录失败后的回调
- *
- *  @param cancelled 代表用户是否主动退出登录
- */
--(void)tencentDidNotLogin:(BOOL)cancelled
-{
-    
-}
-/**
- *  退出登录的回调
- */
--(void)tencentDidLogout
-{
-    NSLog(@"收到登出回调");
+    if ([[YZQQSDKCall getinstance].oauth getUserInfo]) {
+        
+    }
 }
 /**
  *
@@ -175,8 +146,7 @@
     {
         NSData *dictData = [NSJSONSerialization dataWithJSONObject:response.jsonResponse options:NSJSONWritingPrettyPrinted error:nil];
         NSString *resultStr = [[NSString alloc]initWithData:dictData encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",resultStr);
-        doInvokeResult *_invokeResult = [[doInvokeResult alloc] init];
+        doInvokeResult *_invokeResult = [[doInvokeResult alloc]init:self.UniqueKey];
         [_invokeResult SetResultText:resultStr];
         [self.scritEngine Callback:self.callbackName :_invokeResult];
     }
